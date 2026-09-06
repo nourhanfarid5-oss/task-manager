@@ -10,9 +10,12 @@ use App\Http\Controllers\TaskController;
 | Public Routes
 |--------------------------------------------------------------------------
 */
-
 Route::get('/', function () {
-    return view('welcome');
+    if (auth()->check()) {
+        return redirect()->route('dashboard');
+    }
+
+    return redirect()->route('login');
 });
 
 
